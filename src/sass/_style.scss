@@ -1,0 +1,82 @@
+.grid {
+  box-sizing: border-box;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  padding: 10px;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    border: ($grid-border-width/2) solid $grid-border-color;
+  }
+}
+
+
+.box {
+  position: relative;
+  box-sizing: border-box;
+  width: $grid-item-width;
+
+  &::before {
+    content: '';
+    position: relative;
+    width: 100%;
+    display: block;
+    height: 0;
+    padding-bottom: 100%;
+  }
+
+  &__helper {
+    height: 0;
+    width: 100%;
+    padding-bottom: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &__content {
+    border: ($grid-border-width/2) solid $grid-border-color;
+    padding: 0.5em 1em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &_size_2x2 {
+    width: $grid-item-width * 2;
+  }
+  &_size_2x2::before {
+    padding-bottom: 50%;
+  }
+  &_size_2x2 + & + & + & + & {
+    margin-left: $grid-item-width * 2;
+  }
+
+  &_size_2x1 {
+    width: $grid-item-width * 2;
+  }
+  &_size_2x1::before {
+    padding-bottom: 50%;
+  }
+  &_size_2x1 &__helper {
+    padding-bottom: 50%;
+  }
+}
+
+.box__content {
+  font-size: 30px;
+  background-color: rgb(37, 37, 37);
+  color: rgb(255, 255, 255);
+}
+
+.box:nth-child(5) .box__content,
+.box:nth-child(9) .box__content,
+.box:nth-child(11) .box__content,
+.box:nth-child(19) .box__content,
+.box:nth-child(21) .box__content {
+  background-color: rgb(255, 196, 0);
+  color: rgb(0, 0, 0);
+}
