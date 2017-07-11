@@ -1,7 +1,7 @@
 # grid-system
 
-clone
-npm i
-boweri
-gulp default
+#clone
+#npm i
+#bower i
+#gulp default
 
